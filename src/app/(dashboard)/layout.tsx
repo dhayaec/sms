@@ -1,4 +1,5 @@
 import Menu from '@/components/Menu';
+import NavBar from '@/components/NavBar';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,17 +16,22 @@ export default function RootLayout({
 }>) {
   return (
     <div className="h-screen flex">
-      <div className="w-[14%] md:w-[16%] xl:w-[18%]">
+      {/* LEFT */}
+      <div className="w-[14%] md:w-[16%] xl:w-[18%] p-2">
         <Link
           href={`/`}
           className="flex justify-center items-center lg:justify-start gap-2"
         >
           <Image src="/img/logo.png" alt="" width={32} height={32} priority />
-          <span className="hidden lg:block">SMS</span>
+          <h1 className="hidden lg:block text-2xl font-semibold">SMS</h1>
         </Link>
         <Menu />
       </div>
-      <div className="w-[86%] md:w-[84%] xl:w-[82%] bg-slate-600">R</div>
+      {/* RIGHT */}
+      <div className="w-[86%] md:w-[84%] xl:w-[82%] bg-slate-200 overflow-x-hidden overflow-scroll">
+        <NavBar />
+        {children}
+      </div>
     </div>
   );
 }
